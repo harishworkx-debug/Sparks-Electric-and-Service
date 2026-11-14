@@ -1,5 +1,5 @@
 import { useParams, Navigate } from 'react-router-dom';
-import { getLocation } from '@/data/locations';
+import { getLocation, getMainLocation } from '@/data/locations';
 import { getService } from '@/data/services';
 import LocationPage from '@/pages/LocationPage';
 import ServiceLocationPage from '@/pages/ServiceLocationPage';
@@ -20,7 +20,14 @@ export default function DynamicRouter() {
     return <LocationPage location={location} />;
   }
 
-  // 2. Try to match {serviceSlug}-{locationSlug}
+  // 2. Check if this is a pure service slug (e.g., "electrical-repair" without location) -> redirect to main location
+  const pureService = getService(path);
+  if (pureService) {
+    const mainLoc = getMainLocation();
+    return <Navigate to={`/${pureService.slug}-${mainLoc.citySlug}`} replace />;
+  }
+
+  // 3. Try to match {serviceSlug}-{locationSlug}
   // Supports /electrical-repair-monroe-wa or /electrical-repair-electrician-monroe-wa
   const serviceLocMatch =
     path.match(/^(.+)-(?:electrician|electrition)-([a-z-]+-wa)$/) ||

@@ -1,4 +1,11 @@
+# Robots.txt for Sparks Electric and Service
+# Official Website: https://www.sparkselectricandservice.com
+
 User-agent: *
 Allow: /
 
+# Prevent indexing of 404 error page
+Disallow: /404
+
+# XML Sitemap
 Sitemap: https://www.sparkselectricandservice.com/sitemap.xml

@@ -42,7 +42,7 @@ export default function NotFoundPage() {
             <div>
               <h2 className="mb-4 font-display text-xl font-bold text-navy-500">Popular Services</h2>
               <ul className="space-y-2">
-                {services.slice(0, 6).map((s) => (
+                {services.map((s) => (
                   <li key={s.slug}>
                     <Link
                       to={`/${s.slug}-duvall-wa`}
@@ -58,7 +58,7 @@ export default function NotFoundPage() {
             <div>
               <h2 className="mb-4 font-display text-xl font-bold text-navy-500">Service Areas</h2>
               <ul className="space-y-2">
-                {locations.slice(0, 6).map((l) => (
+                {locations.map((l) => (
                   <li key={l.slug}>
                     <Link
                       to={`/${l.slug}`}

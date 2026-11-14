@@ -31,6 +31,7 @@ import {
   localBusinessSchema,
   organizationSchema,
   websiteSchema,
+  faqSchema,
 } from '@/data/structuredData';
 
 const heroImage =
@@ -144,7 +145,12 @@ export default function HomePage() {
       <SEO
         title="Sparks Electric and Service | Electrician in Duvall, WA"
         description={`Professional residential and commercial electrical services in Duvall, WA and the Snoqualmie Valley. Repairs, installations, EV chargers, panel upgrades. Call ${PHONE_DISPLAY}.`}
-        structuredData={[localBusinessSchema(), organizationSchema(), websiteSchema()]}
+        structuredData={[
+          localBusinessSchema(),
+          organizationSchema(),
+          websiteSchema(),
+          faqSchema(generalFaqs),
+        ]}
       />
 
       {/* Hero Section */}
@@ -426,14 +432,14 @@ export default function HomePage() {
               <p className="mt-4 text-base text-navy-300 leading-relaxed">
                 We offer the full range of our electrical services right here in Duvall. Explore our services below, or call us directly to discuss your project.
               </p>
-              <div className="mt-8 grid grid-cols-2 gap-3">
-                {services.slice(0, 6).map((s) => (
+              <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {services.map((s) => (
                   <Link
                     key={s.slug}
                     to={`/${s.slug}-duvall-wa`}
                     className="inline-flex items-center gap-1.5 text-sm font-medium text-electric-500 hover:text-electric-600 transition-colors"
                   >
-                    <ArrowRight className="h-3.5 w-3.5" />
+                    <ArrowRight className="h-3.5 w-3.5 flex-shrink-0" />
                     {s.shortName} in Duvall
                   </Link>
                 ))}

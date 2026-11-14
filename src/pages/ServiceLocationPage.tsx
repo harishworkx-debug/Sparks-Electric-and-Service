@@ -19,9 +19,9 @@ import SEO from '@/components/SEO';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import CallButton from '@/components/CallButton';
 import FAQAccordion from '@/components/FAQAccordion';
-import { PHONE_DISPLAY, getService, ServiceData } from '@/data/services';
-import { LocationData, getLocation, nearbyLocations } from '@/data/locations';
-import { serviceSchema, breadcrumbSchema, localBusinessSchema } from '@/data/structuredData';
+import { PHONE_DISPLAY, getService, ServiceData, services } from '@/data/services';
+import { LocationData, getLocation, nearbyLocations, locations } from '@/data/locations';
+import { serviceSchema, breadcrumbSchema, localBusinessSchema, faqSchema } from '@/data/structuredData';
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Wrench, Search, Cable, Lightbulb, Fan, Zap, BatteryCharging, Plug, ToggleRight, ShieldAlert, Power, Building2,
@@ -72,7 +72,8 @@ export default function ServiceLocationPage({ service, location }: ServiceLocati
         structuredData={[
           serviceSchema(`${service.name} in ${location.shortName}`, service.description, location.citySlug),
           breadcrumbSchema(breadcrumbItems),
-          localBusinessSchema(),
+          localBusinessSchema(location.shortName),
+          faqSchema(locationFaqs),
         ]}
       />
 
@@ -233,6 +234,85 @@ export default function ServiceLocationPage({ service, location }: ServiceLocati
                   ))}
                 </ul>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Complete Internal Linking Matrix for SEO */}
+      <section className="bg-white py-16 border-t border-gray-100">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
+            {/* Same service across all other cities */}
+            <div>
+              <h3 className="font-display text-xl font-bold text-navy-500 mb-4">
+                {service.name} in Other Washington Cities
+              </h3>
+              <p className="text-sm text-navy-300 mb-4">
+                We provide professional {service.name.toLowerCase()} across our full Snoqualmie Valley and Eastside service area:
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
+                {locations
+                  .filter((l) => l.citySlug !== location.citySlug)
+                  .map((otherLoc) => (
+                    <Link
+                      key={otherLoc.slug}
+                      to={`/${service.slug}-${otherLoc.citySlug}`}
+                      className="inline-flex items-center gap-1.5 text-electric-500 hover:text-electric-600 font-medium py-1 transition-colors"
+                    >
+                      <ArrowRight className="h-3.5 w-3.5 flex-shrink-0" />
+                      <span>
+                        {service.shortName} in {otherLoc.shortName}
+                      </span>
+                    </Link>
+                  ))}
+              </div>
+            </div>
+
+            {/* Other services in the same city */}
+            <div>
+              <h3 className="font-display text-xl font-bold text-navy-500 mb-4">
+                Other Electrical Services in {location.shortName}
+              </h3>
+              <p className="text-sm text-navy-300 mb-4">
+                Explore our full line of licensed electrical installations and repairs in {location.name}:
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
+                {services
+                  .filter((s) => s.slug !== service.slug)
+                  .map((otherServ) => (
+                    <Link
+                      key={otherServ.slug}
+                      to={`/${otherServ.slug}-${location.citySlug}`}
+                      className="inline-flex items-center gap-1.5 text-navy-400 hover:text-electric-500 font-medium py-1 transition-colors"
+                    >
+                      <ArrowRight className="h-3.5 w-3.5 flex-shrink-0 text-electric-500" />
+                      <span>{otherServ.name}</span>
+                    </Link>
+                  ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Service Area Hubs Navigation */}
+          <div className="mt-12 pt-8 border-t border-gray-100">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-navy-300 mb-3">
+              Explore All Sparks Electric Service Areas:
+            </h4>
+            <div className="flex flex-wrap gap-2">
+              {locations.map((loc) => (
+                <Link
+                  key={loc.slug}
+                  to={`/${loc.slug}`}
+                  className={`inline-block rounded-full px-3 py-1 text-xs font-semibold transition-colors ${
+                    loc.citySlug === location.citySlug
+                      ? 'bg-electric-500 text-white'
+                      : 'bg-lightgray text-navy-400 hover:bg-electric-100 hover:text-electric-600'
+                  }`}
+                >
+                  Electrician in {loc.shortName}, WA
+                </Link>
+              ))}
             </div>
           </div>
         </div>

@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, MapPin } from 'lucide-react';
 import SEO from '@/components/SEO';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import ServiceCard from '@/components/ServiceCard';
 import CallButton from '@/components/CallButton';
 import { PHONE_DISPLAY, services } from '@/data/services';
-import { getMainLocation } from '@/data/locations';
-import { organizationSchema } from '@/data/structuredData';
+import { getMainLocation, locations } from '@/data/locations';
+import { organizationSchema, localBusinessSchema, breadcrumbSchema } from '@/data/structuredData';
 
 export default function ServicesPage() {
   const mainLocation = getMainLocation();
@@ -17,7 +17,14 @@ export default function ServicesPage() {
         title="Electrical Services in Duvall, WA | Sparks Electric and Service"
         description={`Professional electrical services in Duvall, WA including repair, troubleshooting, wiring, lighting, panel upgrades, EV chargers, and commercial electrical work. Call ${PHONE_DISPLAY}.`}
         canonicalPath="/services"
-        structuredData={organizationSchema()}
+        structuredData={[
+          localBusinessSchema(),
+          organizationSchema(),
+          breadcrumbSchema([
+            { label: 'Home', path: '/' },
+            { label: 'Electrical Services', path: '/services' },
+          ]),
+        ]}
       />
 
       <div className="bg-lightgray border-b border-gray-100">
@@ -48,6 +55,75 @@ export default function ServicesPage() {
             {services.map((service) => (
               <ServiceCard key={service.slug} service={service} locationSlug={mainLocation.citySlug} />
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Internal Linking: Electrical Services Across All Service Areas */}
+      <section className="bg-white py-16 lg:py-20 border-t border-gray-100">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-10 text-center">
+            <h2 className="font-display text-2xl font-bold text-navy-500 sm:text-3xl">
+              Electrical Services in Your City
+            </h2>
+            <p className="mt-3 text-base text-navy-300 max-w-2xl mx-auto">
+              Sparks Electric and Service proudly serves communities across King and Snohomish counties. Select your city to explore tailored local electrical services.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {locations.map((loc) => (
+              <div
+                key={loc.slug}
+                className="rounded-xl border border-gray-100 bg-lightgray p-5 transition-all hover:border-electric-200 hover:shadow-sm"
+              >
+                <div className="flex items-center gap-2 mb-3">
+                  <MapPin className="h-5 w-5 text-electric-500 flex-shrink-0" />
+                  <Link
+                    to={`/${loc.slug}`}
+                    className="font-display font-bold text-navy-500 hover:text-electric-500 transition-colors"
+                  >
+                    Electrician in {loc.name}
+                  </Link>
+                </div>
+                <div className="space-y-1.5 pl-7 text-xs sm:text-sm">
+                  <div>
+                    <Link
+                      to={`/electrical-repair-${loc.citySlug}`}
+                      className="text-navy-300 hover:text-electric-500 transition-colors"
+                    >
+                      &bull; Electrical Repair in {loc.shortName}
+                    </Link>
+                  </div>
+                  <div>
+                    <Link
+                      to={`/ev-charger-installation-${loc.citySlug}`}
+                      className="text-navy-300 hover:text-electric-500 transition-colors"
+                    >
+                      &bull; EV Charger Installation in {loc.shortName}
+                    </Link>
+                  </div>
+                  <div>
+                    <Link
+                      to={`/electrical-panel-upgrade-${loc.citySlug}`}
+                      className="text-navy-300 hover:text-electric-500 transition-colors"
+                    >
+                      &bull; Panel Upgrades in {loc.shortName}
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-8 text-center">
+            <Link
+              to="/service-areas"
+              className="inline-flex items-center gap-2 font-bold text-electric-500 hover:text-electric-600 transition-colors"
+            >
+              View All Service Areas
+              <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
         </div>
       </section>

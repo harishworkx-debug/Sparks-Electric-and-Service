@@ -5,22 +5,59 @@ import {
   WEBSITE_URL,
   MAPS_LINK,
 } from '@/data/services';
-import { getMainLocation } from '@/data/locations';
+import { getMainLocation, locations } from '@/data/locations';
 import { reviews, GOOGLE_RATING, TOTAL_REVIEWS } from '@/data/reviews';
 
 const BASE_URL = 'https://www.sparkselectricandservice.com';
+const LOGO_URL = `${BASE_URL}/icon-192.png`;
+const DEFAULT_IMAGE =
+  'https://images.pexels.com/photos/27928762/pexels-photo-27928762.jpeg?auto=compress&cs=tinysrgb&w=1200';
 
-export function localBusinessSchema() {
+export function localBusinessSchema(specificCity?: string) {
   const main = getMainLocation();
+
   return {
     '@context': 'https://schema.org',
-    '@type': 'Electrician',
+    '@type': ['Electrician', 'LocalBusiness'],
     '@id': `${BASE_URL}/#business`,
     name: BUSINESS_NAME,
+    legalName: BUSINESS_NAME,
     telephone: '+12064767798',
     url: BASE_URL,
-    image: `${BASE_URL}/og-image.jpg`,
+    image: DEFAULT_IMAGE,
+    logo: LOGO_URL,
     priceRange: '$$',
+    currenciesAccepted: 'USD',
+    paymentAccepted: 'Cash, Check, Credit Card',
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+        opens: '07:00',
+        closes: '19:00',
+      },
+    ],
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: '47.7423',
+      longitude: '-121.9857',
+    },
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Duvall',
+      addressLocality: specificCity || main.shortName,
+      addressRegion: main.stateAbbr,
+      postalCode: main.zipCodes[0],
+      addressCountry: 'US',
+    },
+    areaServed: locations.map((loc) => ({
+      '@type': 'City',
+      name: loc.name,
+      containedInPlace: {
+        '@type': 'State',
+        name: 'Washington',
+      },
+    })),
     aggregateRating: {
       '@type': 'AggregateRating',
       ratingValue: GOOGLE_RATING.toFixed(1),
@@ -34,6 +71,7 @@ export function localBusinessSchema() {
         '@type': 'Person',
         name: r.author,
       },
+      datePublished: '2025-01-15',
       reviewRating: {
         '@type': 'Rating',
         ratingValue: r.rating.toString(),
@@ -41,25 +79,22 @@ export function localBusinessSchema() {
       },
       reviewBody: r.content,
     })),
-    address: {
-      '@type': 'PostalAddress',
-      addressLocality: main.shortName,
-      addressRegion: main.stateAbbr,
-      postalCode: main.zipCodes[0],
-      addressCountry: 'US',
-    },
-    areaServed: [
-      'Duvall, WA',
-      'Carnation, WA',
-      'Monroe, WA',
-      'Snoqualmie, WA',
-      'North Bend, WA',
-      'Redmond, WA',
-      'Woodinville, WA',
-      'Sammamish, WA',
-      'Fall City, WA',
-    ],
     hasMap: MAPS_LINK,
+  };
+}
+
+export function faqSchema(faqs: { question: string; answer: string }[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
+    })),
   };
 }
 
@@ -70,7 +105,15 @@ export function organizationSchema() {
     '@id': `${BASE_URL}/#organization`,
     name: BUSINESS_NAME,
     url: BASE_URL,
+    logo: LOGO_URL,
     telephone: '+12064767798',
+    contactPoint: {
+      '@type': 'ContactPoint',
+      telephone: '+12064767798',
+      contactType: 'customer service',
+      areaServed: 'US-WA',
+      availableLanguage: 'English',
+    },
   };
 }
 
@@ -92,11 +135,21 @@ export function serviceSchema(serviceName: string, serviceDescription: string, a
     '@context': 'https://schema.org',
     '@type': 'Service',
     name: serviceName,
+    serviceType: 'Electrical Service',
     description: serviceDescription,
     provider: { '@id': `${BASE_URL}/#business` },
     areaServed: {
       '@type': 'City',
       name: area,
+      containedInPlace: {
+        '@type': 'State',
+        name: 'Washington',
+      },
+    },
+    offers: {
+      '@type': 'Offer',
+      priceCurrency: 'USD',
+      availability: 'https://schema.org/InStock',
     },
   };
 }
@@ -114,4 +167,4 @@ export function breadcrumbSchema(items: { label: string; path: string }[]) {
   };
 }
 
-export { BASE_URL };
+export { BASE_URL, LOGO_URL, DEFAULT_IMAGE };

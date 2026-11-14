@@ -10,6 +10,8 @@ interface SEOProps {
 }
 
 const BASE_URL = 'https://www.sparkselectricandservice.com';
+const DEFAULT_IMAGE =
+  'https://images.pexels.com/photos/27928762/pexels-photo-27928762.jpeg?auto=compress&cs=tinysrgb&w=1200';
 
 function updateMetaTag(name: string, content: string, attr: 'name' | 'property' = 'name') {
   let tag = document.querySelector(`meta[${attr}="${name}"]`) as HTMLMetaElement | null;
@@ -34,25 +36,32 @@ function updateLinkTag(rel: string, href: string) {
 export default function SEO({ title, description, canonicalPath, ogImage, structuredData }: SEOProps) {
   const location = useLocation();
   const canonical = `${BASE_URL}${canonicalPath || location.pathname}`;
+  const shareImage = ogImage || DEFAULT_IMAGE;
 
   useEffect(() => {
     document.title = title;
     updateMetaTag('description', description);
     updateLinkTag('canonical', canonical);
 
+    // OpenGraph
+    updateMetaTag('og:site_name', 'Sparks Electric and Service', 'property');
     updateMetaTag('og:title', title, 'property');
     updateMetaTag('og:description', description, 'property');
     updateMetaTag('og:url', canonical, 'property');
     updateMetaTag('og:type', 'website', 'property');
-    if (ogImage) {
-      updateMetaTag('og:image', ogImage, 'property');
-    }
+    updateMetaTag('og:image', shareImage, 'property');
 
+    // Twitter Card
+    updateMetaTag('twitter:card', 'summary_large_image');
     updateMetaTag('twitter:title', title);
     updateMetaTag('twitter:description', description);
-    if (ogImage) {
-      updateMetaTag('twitter:image', ogImage);
-    }
+    updateMetaTag('twitter:image', shareImage);
+
+    // Local SEO Geo tags
+    updateMetaTag('geo.region', 'US-WA');
+    updateMetaTag('geo.placename', 'Duvall, Washington');
+    updateMetaTag('geo.position', '47.7423;-121.9857');
+    updateMetaTag('ICBM', '47.7423, -121.9857');
 
     const existingScript = document.getElementById('structured-data');
     if (existingScript) {

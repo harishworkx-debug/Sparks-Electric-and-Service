@@ -7,8 +7,8 @@ import ServiceCard from '@/components/ServiceCard';
 import FAQAccordion from '@/components/FAQAccordion';
 import ReviewsSection from '@/components/ReviewsSection';
 import { PHONE_DISPLAY, services } from '@/data/services';
-import { LocationData, getLocation, nearbyLocations } from '@/data/locations';
-import { localBusinessSchema, breadcrumbSchema } from '@/data/structuredData';
+import { LocationData, getLocation, nearbyLocations, locations } from '@/data/locations';
+import { localBusinessSchema, breadcrumbSchema, faqSchema } from '@/data/structuredData';
 
 interface LocationPageProps {
   location: LocationData;
@@ -56,8 +56,9 @@ export default function LocationPage({ location }: LocationPageProps) {
         description={pageDescription}
         canonicalPath={canonicalPath}
         structuredData={[
-          localBusinessSchema(),
+          localBusinessSchema(location.shortName),
           breadcrumbSchema(breadcrumbItems),
+          faqSchema(locationFaqs),
         ]}
       />
 
@@ -136,30 +137,30 @@ export default function LocationPage({ location }: LocationPageProps) {
         </div>
       </section>
 
-      {/* Nearby Areas */}
-      {nearbyLocs.length > 0 && (
-        <section className="bg-white py-16">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <h2 className="mb-8 font-display text-2xl font-bold text-navy-500">
-              Areas We Serve Near {location.shortName}
-            </h2>
-            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-              {nearbyLocs.map((nearLoc) => (
+      {/* Nearby Areas & Other Service Coverage */}
+      <section className="bg-white py-16">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <h2 className="mb-8 font-display text-2xl font-bold text-navy-500">
+            Areas We Serve Near {location.shortName}
+          </h2>
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+            {locations
+              .filter((l) => l.slug !== location.slug)
+              .map((otherLoc) => (
                 <Link
-                  key={nearLoc.slug}
-                  to={`/${nearLoc.slug}`}
+                  key={otherLoc.slug}
+                  to={`/${otherLoc.slug}`}
                   className="group flex items-center gap-2 rounded-lg bg-lightgray px-4 py-3 transition-all hover:bg-electric-50"
                 >
                   <MapPin className="h-5 w-5 text-electric-500 flex-shrink-0" />
                   <span className="text-sm font-medium text-navy-500 group-hover:text-electric-600">
-                    {nearLoc.name}
+                    Electrician in {otherLoc.shortName}
                   </span>
                 </Link>
               ))}
-            </div>
           </div>
-        </section>
-      )}
+        </div>
+      </section>
 
       {/* Google Reviews */}
       <ReviewsSection bgClass="bg-white" />

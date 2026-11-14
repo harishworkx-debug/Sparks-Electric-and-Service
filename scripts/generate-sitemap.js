@@ -58,4 +58,8 @@ console.log(`Generated public/sitemap.xml with ${staticPages.length + locations.
 if (fs.existsSync('./dist')) {
   fs.writeFileSync('./dist/sitemap.xml', xml, 'utf8');
   console.log('Copied sitemap.xml to dist/sitemap.xml');
+  if (fs.existsSync('./public/robots.txt')) {
+    fs.copyFileSync('./public/robots.txt', './dist/robots.txt');
+    console.log('Copied robots.txt to dist/robots.txt');
+  }
 }

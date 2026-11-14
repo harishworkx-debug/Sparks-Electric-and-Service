@@ -17,7 +17,7 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import CallButton from '@/components/CallButton';
 import ReviewsSection from '@/components/ReviewsSection';
 import { PHONE_DISPLAY, PHONE_LINK, BUSINESS_NAME } from '@/data/services';
-import { organizationSchema, localBusinessSchema } from '@/data/structuredData';
+import { organizationSchema, localBusinessSchema, breadcrumbSchema } from '@/data/structuredData';
 
 const aboutImage =
   'https://images.pexels.com/photos/8961034/pexels-photo-8961034.jpeg?auto=compress&cs=tinysrgb&w=1200';
@@ -65,7 +65,14 @@ export default function AboutPage() {
         title="About Sparks Electric and Service | Electrician in Duvall, WA"
         description={`Sparks Electric and Service is a licensed electrical contractor based in Duvall, WA serving the Snoqualmie Valley. Call ${PHONE_DISPLAY}.`}
         canonicalPath="/about"
-        structuredData={[organizationSchema(), localBusinessSchema()]}
+        structuredData={[
+          organizationSchema(),
+          localBusinessSchema(),
+          breadcrumbSchema([
+            { label: 'Home', path: '/' },
+            { label: 'About Us', path: '/about' },
+          ]),
+        ]}
       />
 
       {/* Breadcrumbs */}

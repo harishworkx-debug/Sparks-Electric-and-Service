@@ -5,7 +5,7 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import CallButton from '@/components/CallButton';
 import { PHONE_DISPLAY, services } from '@/data/services';
 import { locations } from '@/data/locations';
-import { organizationSchema } from '@/data/structuredData';
+import { organizationSchema, localBusinessSchema, breadcrumbSchema } from '@/data/structuredData';
 
 export default function ServiceAreasPage() {
   return (
@@ -14,7 +14,14 @@ export default function ServiceAreasPage() {
         title="Service Areas in Snoqualmie Valley, WA | Sparks Electric and Service"
         description={`Sparks Electric and Service serves Duvall, Carnation, Monroe, Snoqualmie, North Bend, Redmond, Woodinville, Sammamish, and Fall City, WA. Call ${PHONE_DISPLAY}.`}
         canonicalPath="/service-areas"
-        structuredData={organizationSchema()}
+        structuredData={[
+          localBusinessSchema(),
+          organizationSchema(),
+          breadcrumbSchema([
+            { label: 'Home', path: '/' },
+            { label: 'Service Areas', path: '/service-areas' },
+          ]),
+        ]}
       />
 
       <div className="bg-lightgray border-b border-gray-100">
@@ -69,6 +76,43 @@ export default function ServiceAreasPage() {
                 </div>
               </Link>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Services Available Across All Service Areas */}
+      <section className="bg-white py-16 lg:py-20 border-t border-gray-100">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-10 text-center">
+            <h2 className="font-display text-2xl font-bold text-navy-500 sm:text-3xl">
+              Services Provided Across All Our Service Areas
+            </h2>
+            <p className="mt-3 text-base text-navy-300 max-w-2xl mx-auto">
+              Regardless of which city you reside in, Sparks Electric and Service delivers code-compliant, professional residential and commercial electrical work.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+            {services.map((serv) => (
+              <Link
+                key={serv.slug}
+                to={`/${serv.slug}-duvall-wa`}
+                className="group flex items-center justify-between rounded-lg bg-lightgray px-4 py-3 text-sm font-medium text-navy-500 transition-all hover:bg-electric-500 hover:text-white"
+              >
+                <span>{serv.name}</span>
+                <ArrowRight className="h-4 w-4 text-electric-500 group-hover:text-white transition-colors" />
+              </Link>
+            ))}
+          </div>
+
+          <div className="mt-8 text-center">
+            <Link
+              to="/services"
+              className="inline-flex items-center gap-2 font-bold text-electric-500 hover:text-electric-600 transition-colors"
+            >
+              View Full Service Descriptions
+              <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
         </div>
       </section>

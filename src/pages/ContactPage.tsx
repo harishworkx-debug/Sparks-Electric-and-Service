@@ -12,7 +12,7 @@ import {
   MAPS_EMBED_SRC,
 } from '@/data/services';
 import { getMainLocation } from '@/data/locations';
-import { localBusinessSchema, organizationSchema } from '@/data/structuredData';
+import { localBusinessSchema, organizationSchema, breadcrumbSchema } from '@/data/structuredData';
 
 export default function ContactPage() {
   const mainLocation = getMainLocation();
@@ -23,7 +23,14 @@ export default function ContactPage() {
         title="Contact Sparks Electric and Service | Electrician in Duvall, WA"
         description={`Contact Sparks Electric and Service at ${PHONE_DISPLAY}. Serving Duvall, WA and the Snoqualmie Valley. Call us for all your electrical needs.`}
         canonicalPath="/contact"
-        structuredData={[localBusinessSchema(), organizationSchema()]}
+        structuredData={[
+          localBusinessSchema(),
+          organizationSchema(),
+          breadcrumbSchema([
+            { label: 'Home', path: '/' },
+            { label: 'Contact', path: '/contact' },
+          ]),
+        ]}
       />
 
       <div className="bg-lightgray border-b border-gray-100">
