@@ -22,8 +22,10 @@ import SEO from '@/components/SEO';
 import CallButton from '@/components/CallButton';
 import ServiceCard from '@/components/ServiceCard';
 import FAQAccordion from '@/components/FAQAccordion';
-import { PHONE_DISPLAY, services } from '@/data/services';
+import ReviewsSection from '@/components/ReviewsSection';
+import { PHONE_DISPLAY, services, MAPS_LINK } from '@/data/services';
 import { locations } from '@/data/locations';
+import { GOOGLE_RATING, TOTAL_REVIEWS } from '@/data/reviews';
 import { generalFaqs } from '@/data/faqs';
 import {
   localBusinessSchema,
@@ -184,33 +186,49 @@ export default function HomePage() {
       {/* Trust Bar */}
       <section className="bg-white border-b border-gray-100">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
-          <div className="grid grid-cols-2 gap-6 lg:grid-cols-4">
+          <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-5">
             <div className="flex items-center gap-3">
               <MapPin className="h-8 w-8 text-electric-500 flex-shrink-0" />
               <div>
                 <p className="text-xs text-navy-200 uppercase font-semibold">Based In</p>
-                <p className="text-sm font-bold text-navy-500">Duvall, Washington</p>
+                <p className="text-sm font-bold text-navy-500">Duvall, WA</p>
               </div>
             </div>
-            <div className="flex items-center gap-3">
-              <Phone className="h-8 w-8 text-electric-500 flex-shrink-0" />
+            <a
+              href={MAPS_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 group"
+            >
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-warmyellow-400 text-navy-500 flex-shrink-0 group-hover:scale-105 transition-transform">
+                <Star className="h-5 w-5 fill-navy-500 text-navy-500" />
+              </div>
               <div>
-                <p className="text-xs text-navy-200 uppercase font-semibold">Call Us</p>
-                <p className="text-sm font-bold text-navy-500">{PHONE_DISPLAY}</p>
+                <p className="text-xs text-navy-200 uppercase font-semibold">Google Rating</p>
+                <p className="text-sm font-bold text-navy-500 group-hover:text-electric-500 transition-colors">
+                  5.0 ★★★★★ ({TOTAL_REVIEWS})
+                </p>
               </div>
-            </div>
+            </a>
             <div className="flex items-center gap-3">
               <Shield className="h-8 w-8 text-electric-500 flex-shrink-0" />
               <div>
                 <p className="text-xs text-navy-200 uppercase font-semibold">Licensed</p>
-                <p className="text-sm font-bold text-navy-500">WA Electrical Contractor</p>
+                <p className="text-sm font-bold text-navy-500">WA Contractor</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
               <Building2 className="h-8 w-8 text-electric-500 flex-shrink-0" />
               <div>
                 <p className="text-xs text-navy-200 uppercase font-semibold">Services</p>
-                <p className="text-sm font-bold text-navy-500">Residential & Commercial</p>
+                <p className="text-sm font-bold text-navy-500">Res & Commercial</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-3 col-span-2 sm:col-span-1">
+              <Phone className="h-8 w-8 text-electric-500 flex-shrink-0" />
+              <div>
+                <p className="text-xs text-navy-200 uppercase font-semibold">Direct Phone</p>
+                <p className="text-sm font-bold text-navy-500">{PHONE_DISPLAY}</p>
               </div>
             </div>
           </div>
@@ -223,7 +241,7 @@ export default function HomePage() {
           <div className="mb-12 text-center">
             <h2 className="font-display text-3xl font-bold text-navy-500 sm:text-4xl">Electrical Services</h2>
             <p className="mt-4 text-lg text-navy-300 max-w-2xl mx-auto">
-              Professional electrical services for homes and businesses throughout Duvall and the Snoqualmie Valley. Click any service to learn more.
+              Professional electrical services for homes and businesses throughout Duvall and the Snoqualmie Valley. Click any service to view full details.
             </p>
           </div>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -300,8 +318,11 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Verified Google Reviews */}
+      <ReviewsSection bgClass="bg-white" />
+
       {/* What to Expect Section */}
-      <section className="bg-white py-16 lg:py-24">
+      <section className="bg-lightgray py-16 lg:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-12 text-center">
             <h2 className="font-display text-3xl font-bold text-navy-500 sm:text-4xl">What to Expect When You Call</h2>
@@ -403,7 +424,7 @@ export default function HomePage() {
                 Duvall is where Sparks Electric and Service is based, and we are proud to serve our local community. Whether you live in a historic home near downtown Duvall or a newer property in the surrounding hills, we understand the electrical challenges common to the area — from older wiring that needs updating to modern homes adding EV chargers and smart home systems.
               </p>
               <p className="mt-4 text-base text-navy-300 leading-relaxed">
-                We offer the full range of our electrical services right here in Duvall. Explore any service below to learn more, or call us directly to discuss your project.
+                We offer the full range of our electrical services right here in Duvall. Explore our services below, or call us directly to discuss your project.
               </p>
               <div className="mt-8 grid grid-cols-2 gap-3">
                 {services.slice(0, 6).map((s) => (

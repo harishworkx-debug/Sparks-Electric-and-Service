@@ -34,7 +34,7 @@ export default function TermsAndConditionsPage() {
             <div>
               <h2 className="font-display text-xl font-bold text-navy-500 mb-3">Use of Our Website</h2>
               <p>
-                Our website provides information about our electrical services and service areas. The website is intended to help you learn about our services and contact us by phone. You agree to use the website for lawful purposes only and not to misuse, disrupt, or attempt to gain unauthorized access to any part of the website.
+                Our website provides information about our electrical services and service areas. The website is intended to provide details regarding our services and contact us by phone. You agree to use the website for lawful purposes only and not to misuse, disrupt, or attempt to gain unauthorized access to any part of the website.
               </p>
             </div>
 

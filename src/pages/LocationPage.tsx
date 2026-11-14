@@ -5,6 +5,7 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import CallButton from '@/components/CallButton';
 import ServiceCard from '@/components/ServiceCard';
 import FAQAccordion from '@/components/FAQAccordion';
+import ReviewsSection from '@/components/ReviewsSection';
 import { PHONE_DISPLAY, services } from '@/data/services';
 import { LocationData, getLocation, nearbyLocations } from '@/data/locations';
 import { localBusinessSchema, breadcrumbSchema } from '@/data/structuredData';
@@ -129,7 +130,7 @@ export default function LocationPage({ location }: LocationPageProps) {
           </div>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((service) => (
-              <ServiceCard key={service.slug} service={service} locationSlug={location.slug} />
+              <ServiceCard key={service.slug} service={service} locationSlug={location.citySlug} />
             ))}
           </div>
         </div>
@@ -159,6 +160,9 @@ export default function LocationPage({ location }: LocationPageProps) {
           </div>
         </section>
       )}
+
+      {/* Google Reviews */}
+      <ReviewsSection bgClass="bg-white" />
 
       {/* FAQs */}
       <section className="bg-lightgray py-16 lg:py-24">

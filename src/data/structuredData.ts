@@ -6,6 +6,7 @@ import {
   MAPS_LINK,
 } from '@/data/services';
 import { getMainLocation } from '@/data/locations';
+import { reviews, GOOGLE_RATING, TOTAL_REVIEWS } from '@/data/reviews';
 
 const BASE_URL = 'https://www.sparkselectricandservice.com';
 
@@ -20,6 +21,26 @@ export function localBusinessSchema() {
     url: BASE_URL,
     image: `${BASE_URL}/og-image.jpg`,
     priceRange: '$$',
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: GOOGLE_RATING.toFixed(1),
+      reviewCount: TOTAL_REVIEWS.toString(),
+      bestRating: '5',
+      worstRating: '1',
+    },
+    review: reviews.map((r) => ({
+      '@type': 'Review',
+      author: {
+        '@type': 'Person',
+        name: r.author,
+      },
+      reviewRating: {
+        '@type': 'Rating',
+        ratingValue: r.rating.toString(),
+        bestRating: '5',
+      },
+      reviewBody: r.content,
+    })),
     address: {
       '@type': 'PostalAddress',
       addressLocality: main.shortName,
@@ -65,7 +86,8 @@ export function websiteSchema() {
 }
 
 export function serviceSchema(serviceName: string, serviceDescription: string, areaSlug: string) {
-  const area = areaSlug === 'duvall-wa' ? 'Duvall, WA' : areaSlug.replace(/-/g, ' ').replace(/ wa$/, ', WA');
+  const cleanArea = areaSlug.replace(/^(?:electrician|electrition)-/, '');
+  const area = cleanArea === 'duvall-wa' ? 'Duvall, WA' : cleanArea.replace(/-/g, ' ').replace(/ wa$/, ', WA');
   return {
     '@context': 'https://schema.org',
     '@type': 'Service',

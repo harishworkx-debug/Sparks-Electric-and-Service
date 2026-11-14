@@ -15,6 +15,7 @@ import {
 import SEO from '@/components/SEO';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import CallButton from '@/components/CallButton';
+import ReviewsSection from '@/components/ReviewsSection';
 import { PHONE_DISPLAY, PHONE_LINK, BUSINESS_NAME } from '@/data/services';
 import { organizationSchema, localBusinessSchema } from '@/data/structuredData';
 
@@ -62,7 +63,7 @@ export default function AboutPage() {
     <>
       <SEO
         title="About Sparks Electric and Service | Electrician in Duvall, WA"
-        description={`Learn about Sparks Electric and Service, a licensed electrical contractor based in Duvall, WA serving the Snoqualmie Valley. Call ${PHONE_DISPLAY}.`}
+        description={`Sparks Electric and Service is a licensed electrical contractor based in Duvall, WA serving the Snoqualmie Valley. Call ${PHONE_DISPLAY}.`}
         canonicalPath="/about"
         structuredData={[organizationSchema(), localBusinessSchema()]}
       />
@@ -161,6 +162,9 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      {/* Verified Google Reviews */}
+      <ReviewsSection bgClass="bg-lightgray" />
 
       {/* CTA */}
       <section className="bg-navy-500 py-16">

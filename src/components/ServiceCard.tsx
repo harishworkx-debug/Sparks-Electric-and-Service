@@ -12,7 +12,8 @@ interface ServiceCardProps {
 export default function ServiceCard({ service, locationSlug = 'duvall-wa' }: ServiceCardProps) {
   const navigate = useNavigate();
   const IconComponent = (Icons as unknown as Record<string, React.ComponentType<{ className?: string }>>)[service.icon] || Icons.Zap;
-  const linkPath = `/${service.slug}-${locationSlug}`;
+  const cleanLocSlug = locationSlug.replace(/^(?:electrician|electrition)-/, '');
+  const linkPath = `/${service.slug}-${cleanLocSlug}`;
 
   return (
     <div
@@ -45,7 +46,7 @@ export default function ServiceCard({ service, locationSlug = 'duvall-wa' }: Ser
         <p className="mb-4 text-sm text-navy-300 leading-relaxed flex-1">{service.description}</p>
         <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
           <span className="inline-flex items-center gap-1 text-sm font-semibold text-electric-500 group-hover:text-electric-600 transition-colors">
-            Learn About {service.shortName}
+            View {service.shortName}
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </span>
           <a

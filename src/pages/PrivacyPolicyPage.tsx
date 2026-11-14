@@ -7,7 +7,7 @@ export default function PrivacyPolicyPage() {
     <>
       <SEO
         title="Privacy Policy | Sparks Electric and Service"
-        description={`Privacy Policy for ${BUSINESS_NAME}. Learn how we handle information on our website.`}
+        description={`Privacy Policy for ${BUSINESS_NAME}. Understand how we handle information on our website.`}
         canonicalPath="/privacy-policy"
       />
 

@@ -1,5 +1,6 @@
 export interface LocationData {
   slug: string;
+  citySlug: string;
   name: string;
   shortName: string;
   state: string;
@@ -13,7 +14,8 @@ export interface LocationData {
 
 export const locations: LocationData[] = [
   {
-    slug: 'duvall-wa',
+    slug: 'electrician-duvall-wa',
+    citySlug: 'duvall-wa',
     name: 'Duvall, WA',
     shortName: 'Duvall',
     state: 'Washington',
@@ -27,7 +29,8 @@ export const locations: LocationData[] = [
     county: 'King County',
   },
   {
-    slug: 'carnation-wa',
+    slug: 'electrician-carnation-wa',
+    citySlug: 'carnation-wa',
     name: 'Carnation, WA',
     shortName: 'Carnation',
     state: 'Washington',
@@ -41,7 +44,8 @@ export const locations: LocationData[] = [
     county: 'King County',
   },
   {
-    slug: 'monroe-wa',
+    slug: 'electrician-monroe-wa',
+    citySlug: 'monroe-wa',
     name: 'Monroe, WA',
     shortName: 'Monroe',
     state: 'Washington',
@@ -55,7 +59,8 @@ export const locations: LocationData[] = [
     county: 'Snohomish County',
   },
   {
-    slug: 'snoqualmie-wa',
+    slug: 'electrician-snoqualmie-wa',
+    citySlug: 'snoqualmie-wa',
     name: 'Snoqualmie, WA',
     shortName: 'Snoqualmie',
     state: 'Washington',
@@ -69,7 +74,8 @@ export const locations: LocationData[] = [
     county: 'King County',
   },
   {
-    slug: 'north-bend-wa',
+    slug: 'electrician-north-bend-wa',
+    citySlug: 'north-bend-wa',
     name: 'North Bend, WA',
     shortName: 'North Bend',
     state: 'Washington',
@@ -83,7 +89,8 @@ export const locations: LocationData[] = [
     county: 'King County',
   },
   {
-    slug: 'redmond-wa',
+    slug: 'electrician-redmond-wa',
+    citySlug: 'redmond-wa',
     name: 'Redmond, WA',
     shortName: 'Redmond',
     state: 'Washington',
@@ -97,7 +104,8 @@ export const locations: LocationData[] = [
     county: 'King County',
   },
   {
-    slug: 'woodinville-wa',
+    slug: 'electrician-woodinville-wa',
+    citySlug: 'woodinville-wa',
     name: 'Woodinville, WA',
     shortName: 'Woodinville',
     state: 'Washington',
@@ -111,7 +119,8 @@ export const locations: LocationData[] = [
     county: 'King County',
   },
   {
-    slug: 'sammamish-wa',
+    slug: 'electrician-sammamish-wa',
+    citySlug: 'sammamish-wa',
     name: 'Sammamish, WA',
     shortName: 'Sammamish',
     state: 'Washington',
@@ -125,7 +134,8 @@ export const locations: LocationData[] = [
     county: 'King County',
   },
   {
-    slug: 'fall-city-wa',
+    slug: 'electrician-fall-city-wa',
+    citySlug: 'fall-city-wa',
     name: 'Fall City, WA',
     shortName: 'Fall City',
     state: 'Washington',
@@ -140,8 +150,31 @@ export const locations: LocationData[] = [
   },
 ];
 
-export function getLocation(slug: string): LocationData | undefined {
-  return locations.find((l) => l.slug === slug);
+export function getLocation(query: string): LocationData | undefined {
+  if (!query) return undefined;
+  const normalized = query.toLowerCase().trim();
+
+  // 1. Direct match on slug ('electrician-monroe-wa')
+  const bySlug = locations.find((l) => l.slug === normalized);
+  if (bySlug) return bySlug;
+
+  // 2. Direct match on citySlug ('monroe-wa')
+  const byCitySlug = locations.find((l) => l.citySlug === normalized);
+  if (byCitySlug) return byCitySlug;
+
+  // 3. Match with 'electrition-' prefix ('electrition-monroe-wa')
+  if (normalized.startsWith('electrition-')) {
+    const stripped = normalized.replace(/^electrition-/, '');
+    return locations.find((l) => l.citySlug === stripped || l.slug === `electrician-${stripped}`);
+  }
+
+  // 4. Match with 'electrician-' prefix stripped
+  if (normalized.startsWith('electrician-')) {
+    const stripped = normalized.replace(/^electrician-/, '');
+    return locations.find((l) => l.citySlug === stripped);
+  }
+
+  return undefined;
 }
 
 export function getMainLocation(): LocationData {
@@ -158,4 +191,13 @@ export const nearbyLocations: Record<string, string[]> = {
   'woodinville-wa': ['duvall-wa', 'redmond-wa', 'kirkland-wa'],
   'sammamish-wa': ['redmond-wa', 'snoqualmie-wa', 'issaquah-wa'],
   'fall-city-wa': ['carnation-wa', 'snoqualmie-wa', 'north-bend-wa', 'duvall-wa'],
+  'electrician-duvall-wa': ['carnation-wa', 'monroe-wa', 'fall-city-wa', 'woodinville-wa'],
+  'electrician-carnation-wa': ['duvall-wa', 'fall-city-wa', 'snoqualmie-wa'],
+  'electrician-monroe-wa': ['duvall-wa', 'snoqualmie-wa'],
+  'electrician-snoqualmie-wa': ['north-bend-wa', 'fall-city-wa', 'carnation-wa', 'sammamish-wa'],
+  'electrician-north-bend-wa': ['snoqualmie-wa', 'fall-city-wa'],
+  'electrician-redmond-wa': ['woodinville-wa', 'sammamish-wa', 'kirkland-wa'],
+  'electrician-woodinville-wa': ['duvall-wa', 'redmond-wa', 'kirkland-wa'],
+  'electrician-sammamish-wa': ['redmond-wa', 'snoqualmie-wa', 'issaquah-wa'],
+  'electrician-fall-city-wa': ['carnation-wa', 'snoqualmie-wa', 'north-bend-wa', 'duvall-wa'],
 };

@@ -36,13 +36,13 @@ export default function ServiceLocationPage({ service, location }: ServiceLocati
   const IconComponent = iconMap[service.icon] || Zap;
   const pageTitle = `${service.name} in ${location.shortName}, ${location.stateAbbr} | Sparks Electric and Service`;
   const pageDescription = `Professional ${service.name.toLowerCase()} services in ${location.name} from Sparks Electric and Service. ${service.description} Call ${PHONE_DISPLAY}.`;
-  const canonicalPath = `/${service.slug}-${location.slug}`;
+  const canonicalPath = `/${service.slug}-${location.citySlug}`;
 
   const relatedServices = service.relatedServiceSlugs
     .map((slug) => getService(slug))
     .filter((s): s is NonNullable<typeof s> => s !== undefined);
 
-  const nearby = nearbyLocations[location.slug] || [];
+  const nearby = nearbyLocations[location.slug] || nearbyLocations[location.citySlug] || [];
   const nearbyLocs = nearby
     .map((slug) => getLocation(slug))
     .filter((l): l is NonNullable<typeof l> => l !== undefined);
@@ -70,7 +70,7 @@ export default function ServiceLocationPage({ service, location }: ServiceLocati
         canonicalPath={canonicalPath}
         ogImage={service.image}
         structuredData={[
-          serviceSchema(`${service.name} in ${location.shortName}`, service.description, location.slug),
+          serviceSchema(`${service.name} in ${location.shortName}`, service.description, location.citySlug),
           breadcrumbSchema(breadcrumbItems),
           localBusinessSchema(),
         ]}
@@ -203,7 +203,7 @@ export default function ServiceLocationPage({ service, location }: ServiceLocati
                   {relatedServices.map((relService) => (
                     <li key={relService.slug}>
                       <Link
-                        to={`/${relService.slug}-${location.slug}`}
+                        to={`/${relService.slug}-${location.citySlug}`}
                         className="inline-flex items-center gap-1 text-sm text-electric-500 hover:text-electric-600 transition-colors"
                       >
                         {relService.name} in {location.shortName}
@@ -223,7 +223,7 @@ export default function ServiceLocationPage({ service, location }: ServiceLocati
                   {nearbyLocs.map((nearLoc) => (
                     <li key={nearLoc.slug}>
                       <Link
-                        to={`/${service.slug}-${nearLoc.slug}`}
+                        to={`/${service.slug}-${nearLoc.citySlug}`}
                         className="inline-flex items-center gap-1 text-sm text-electric-500 hover:text-electric-600 transition-colors"
                       >
                         {service.shortName} in {nearLoc.shortName}
