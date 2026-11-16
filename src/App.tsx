@@ -9,6 +9,8 @@ import ServiceAreasPage from '@/pages/ServiceAreasPage';
 import ContactPage from '@/pages/ContactPage';
 import PrivacyPolicyPage from '@/pages/PrivacyPolicyPage';
 import TermsAndConditionsPage from '@/pages/TermsAndConditionsPage';
+import BlogIndexPage from '@/pages/BlogIndexPage';
+import BlogPostPage from '@/pages/BlogPostPage';
 import NotFoundPage from '@/pages/NotFoundPage';
 
 function App() {
@@ -22,6 +24,8 @@ function App() {
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/service-areas" element={<ServiceAreasPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/blog" element={<BlogIndexPage />} />
+          <Route path="/blog/:slug" element={<BlogPostPage />} />
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
           <Route path="/terms-and-conditions" element={<TermsAndConditionsPage />} />
 

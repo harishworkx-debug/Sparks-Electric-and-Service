@@ -1,7 +1,15 @@
 import { Link } from 'react-router-dom';
-import { Zap, Phone, MapPin, ExternalLink } from 'lucide-react';
-import { PHONE_DISPLAY, PHONE_LINK, BUSINESS_NAME, WEBSITE_URL, MAPS_LINK } from '@/data/services';
-import { services } from '@/data/services';
+import { Zap, Phone, MapPin, ExternalLink, ShieldCheck } from 'lucide-react';
+import {
+  PHONE_DISPLAY,
+  PHONE_LINK,
+  BUSINESS_NAME,
+  BUSINESS_ADDRESS,
+  WA_LICENSE_INFO,
+  WEBSITE_URL,
+  MAPS_LINK,
+  services,
+} from '@/data/services';
 import { locations } from '@/data/locations';
 
 export default function Footer() {
@@ -20,9 +28,19 @@ export default function Footer() {
                 <span className="block text-xs text-navy-100">and Service</span>
               </div>
             </div>
-            <p className="text-sm leading-relaxed text-navy-100 mb-4">
+            <p className="text-sm leading-relaxed text-navy-100 mb-3">
               Professional residential and commercial electrical services in Duvall, WA and the Snoqualmie Valley.
             </p>
+            <div className="space-y-2 text-xs text-navy-200 mb-4">
+              <p className="flex items-start gap-1.5">
+                <MapPin className="h-4 w-4 text-warmyellow-400 flex-shrink-0 mt-0.5" />
+                <span>{BUSINESS_ADDRESS.full}</span>
+              </p>
+              <p className="flex items-center gap-1.5 text-navy-300">
+                <ShieldCheck className="h-3.5 w-3.5 text-emerald-400 flex-shrink-0" />
+                <span>{WA_LICENSE_INFO}</span>
+              </p>
+            </div>
             <a
               href={PHONE_LINK}
               className="inline-flex items-center gap-2 text-warmyellow-400 font-bold hover:text-warmyellow-300 transition-colors"
@@ -83,17 +101,37 @@ export default function Footer() {
           {/* Company Column */}
           <div>
             <h3 className="text-white font-display font-bold text-sm uppercase tracking-wider mb-4">
-              Company
+              Quick Links
             </h3>
             <ul className="space-y-2">
+              <li>
+                <Link to="/" className="text-sm hover:text-warmyellow-400 transition-colors">
+                  Home
+                </Link>
+              </li>
               <li>
                 <Link to="/about" className="text-sm hover:text-warmyellow-400 transition-colors">
                   About Us
                 </Link>
               </li>
               <li>
+                <Link to="/services" className="text-sm hover:text-warmyellow-400 transition-colors">
+                  Services
+                </Link>
+              </li>
+              <li>
+                <Link to="/service-areas" className="text-sm hover:text-warmyellow-400 transition-colors">
+                  Service Areas
+                </Link>
+              </li>
+              <li>
                 <Link to="/contact" className="text-sm hover:text-warmyellow-400 transition-colors">
                   Contact
+                </Link>
+              </li>
+              <li>
+                <Link to="/blog" className="text-sm hover:text-warmyellow-400 transition-colors">
+                  Electrical Guides & Blog
                 </Link>
               </li>
               <li>

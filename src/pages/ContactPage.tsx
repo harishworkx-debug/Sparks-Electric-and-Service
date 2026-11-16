@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Phone, MapPin, ExternalLink, Globe, Clock } from 'lucide-react';
+import { Phone, MapPin, ExternalLink, Globe, Clock, ShieldCheck } from 'lucide-react';
 import SEO from '@/components/SEO';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import CallButton from '@/components/CallButton';
@@ -7,6 +7,8 @@ import {
   PHONE_DISPLAY,
   PHONE_LINK,
   BUSINESS_NAME,
+  BUSINESS_ADDRESS,
+  WA_LICENSE_INFO,
   WEBSITE_URL,
   MAPS_LINK,
   MAPS_EMBED_SRC,
@@ -78,20 +80,29 @@ export default function ContactPage() {
                     <MapPin className="h-6 w-6 text-white" />
                   </div>
                   <div>
-                    <h2 className="font-display text-lg font-bold text-navy-500">Location</h2>
-                    <p className="text-sm font-medium text-navy-400">{mainLocation.name}</p>
-                    <p className="text-sm text-navy-300">{mainLocation.county}</p>
+                    <h2 className="font-display text-lg font-bold text-navy-500">Office Location</h2>
+                    <p className="text-base font-semibold text-navy-500">{BUSINESS_ADDRESS.street}</p>
+                    <p className="text-sm font-medium text-navy-400">
+                      {BUSINESS_ADDRESS.city}, {BUSINESS_ADDRESS.state} {BUSINESS_ADDRESS.zip}
+                    </p>
+                    <p className="text-xs text-navy-300 mt-0.5">{mainLocation.county} &bull; King County, WA</p>
                   </div>
                 </div>
-                <a
-                  href={MAPS_LINK}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-electric-500 hover:text-electric-600 transition-colors"
-                >
-                  View on Google Maps
-                  <ExternalLink className="h-4 w-4" />
-                </a>
+                <div className="pt-2 border-t border-gray-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                  <div className="flex items-center gap-1.5 text-xs font-medium text-navy-400">
+                    <ShieldCheck className="h-4 w-4 text-emerald-600" />
+                    <span>{WA_LICENSE_INFO}</span>
+                  </div>
+                  <a
+                    href={MAPS_LINK}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-electric-500 hover:text-electric-600 transition-colors"
+                  >
+                    View on Google Maps
+                    <ExternalLink className="h-4 w-4" />
+                  </a>
+                </div>
               </div>
 
               <div className="rounded-xl bg-lightgray p-6">

@@ -95,11 +95,22 @@ export default function AboutPage() {
                 About Sparks Electric and Service
               </h1>
               <p className="mt-6 text-lg text-navy-300 leading-relaxed">
-                Sparks Electric and Service is a professional electrical contractor based in Duvall, Washington. We provide a wide range of electrical services to residential and commercial clients throughout the Duvall area and the Snoqualmie Valley, including electrical repairs, installations, and maintenance.
+                Sparks Electric and Service is a professional electrical contractor based at 12520 322nd Ave NE, Duvall, Washington. We provide dependable electrical craftsmanship to residential and commercial clients throughout Duvall and the surrounding Snoqualmie Valley.
               </p>
               <p className="mt-4 text-navy-300 leading-relaxed">
-                We are registered with Washington State Labor & Industries as an electrical contractor and are committed to delivering safe, code-compliant work on every job. Whether you need a simple repair or a full panel upgrade, we handle each project with the same attention to detail and commitment to quality.
+                Led by Jonathon, our work is registered with Washington State Labor & Industries as a licensed, bonded, and insured electrical contractor. Whether diagnosing an intermittent fault, wiring a whole-house remodel, or installing a 200-amp panel upgrade, we handle each project with meticulous attention to detail and a commitment to homeowner safety.
               </p>
+              <div className="mt-6 flex flex-wrap gap-3 text-xs font-semibold text-navy-400">
+                <span className="rounded bg-emerald-50 text-emerald-800 border border-emerald-200 px-3 py-1">
+                  WA Licensed Electrical Contractor
+                </span>
+                <span className="rounded bg-blue-50 text-blue-800 border border-blue-200 px-3 py-1">
+                  Bonded & Insured
+                </span>
+                <span className="rounded bg-amber-50 text-amber-800 border border-amber-200 px-3 py-1">
+                  Duvall, WA Local Base
+                </span>
+              </div>
               <div className="mt-8">
                 <CallButton size="lg" label={`Call ${PHONE_DISPLAY}`} />
               </div>

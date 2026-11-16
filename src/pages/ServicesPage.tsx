@@ -71,7 +71,7 @@ export default function ServicesPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 mb-16">
             {locations.map((loc) => (
               <div
                 key={loc.slug}
@@ -111,9 +111,124 @@ export default function ServicesPage() {
                       &bull; Panel Upgrades in {loc.shortName}
                     </Link>
                   </div>
+                  <div>
+                    <Link
+                      to={`/electrical-wiring-${loc.citySlug}`}
+                      className="text-navy-300 hover:text-electric-500 transition-colors"
+                    >
+                      &bull; Electrical Wiring in {loc.shortName}
+                    </Link>
+                  </div>
+                  <div>
+                    <Link
+                      to={`/lighting-installation-${loc.citySlug}`}
+                      className="text-navy-300 hover:text-electric-500 transition-colors"
+                    >
+                      &bull; Lighting Installation in {loc.shortName}
+                    </Link>
+                  </div>
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Grouped Service-to-Location Directory for Crawlability */}
+          <div className="rounded-2xl bg-lightgray p-8 border border-gray-200">
+            <h3 className="font-display text-xl font-bold text-navy-500 mb-6 text-center">
+              Service Directory Across Washington Communities
+            </h3>
+            
+            <div className="space-y-6 text-xs sm:text-sm">
+              <div>
+                <h4 className="font-bold text-navy-500 mb-2">
+                  <Link to="/electrical-repair-duvall-wa" className="text-electric-600 hover:underline">
+                    Electrical Repair:
+                  </Link>
+                </h4>
+                <div className="flex flex-wrap gap-x-3 gap-y-1 text-navy-300">
+                  {locations.map((l, i) => (
+                    <span key={l.slug}>
+                      <Link to={`/electrical-repair-${l.citySlug}`} className="hover:text-electric-500">
+                        {l.shortName}
+                      </Link>
+                      {i < locations.length - 1 && <span className="ml-3 text-gray-300">|</span>}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <h4 className="font-bold text-navy-500 mb-2">
+                  <Link to="/ev-charger-installation-duvall-wa" className="text-electric-600 hover:underline">
+                    EV Charger Installation (Level 2):
+                  </Link>
+                </h4>
+                <div className="flex flex-wrap gap-x-3 gap-y-1 text-navy-300">
+                  {locations.map((l, i) => (
+                    <span key={l.slug}>
+                      <Link to={`/ev-charger-installation-${l.citySlug}`} className="hover:text-electric-500">
+                        {l.shortName}
+                      </Link>
+                      {i < locations.length - 1 && <span className="ml-3 text-gray-300">|</span>}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <h4 className="font-bold text-navy-500 mb-2">
+                  <Link to="/electrical-panel-upgrade-duvall-wa" className="text-electric-600 hover:underline">
+                    200-Amp Electrical Panel Upgrades:
+                  </Link>
+                </h4>
+                <div className="flex flex-wrap gap-x-3 gap-y-1 text-navy-300">
+                  {locations.map((l, i) => (
+                    <span key={l.slug}>
+                      <Link to={`/electrical-panel-upgrade-${l.citySlug}`} className="hover:text-electric-500">
+                        {l.shortName}
+                      </Link>
+                      {i < locations.length - 1 && <span className="ml-3 text-gray-300">|</span>}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <h4 className="font-bold text-navy-500 mb-2">
+                  <Link to="/generator-installation-duvall-wa" className="text-electric-600 hover:underline">
+                    Generator Installation & Transfer Switches:
+                  </Link>
+                </h4>
+                <div className="flex flex-wrap gap-x-3 gap-y-1 text-navy-300">
+                  {locations.map((l, i) => (
+                    <span key={l.slug}>
+                      <Link to={`/generator-installation-${l.citySlug}`} className="hover:text-electric-500">
+                        {l.shortName}
+                      </Link>
+                      {i < locations.length - 1 && <span className="ml-3 text-gray-300">|</span>}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <h4 className="font-bold text-navy-500 mb-2">
+                  <Link to="/commercial-electrical-duvall-wa" className="text-electric-600 hover:underline">
+                    Commercial Electrical Services:
+                  </Link>
+                </h4>
+                <div className="flex flex-wrap gap-x-3 gap-y-1 text-navy-300">
+                  {locations.map((l, i) => (
+                    <span key={l.slug}>
+                      <Link to={`/commercial-electrical-${l.citySlug}`} className="hover:text-electric-500">
+                        {l.shortName}
+                      </Link>
+                      {i < locations.length - 1 && <span className="ml-3 text-gray-300">|</span>}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className="mt-8 text-center">

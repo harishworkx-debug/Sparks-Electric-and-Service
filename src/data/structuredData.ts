@@ -1,5 +1,7 @@
 import {
   BUSINESS_NAME,
+  BUSINESS_ADDRESS,
+  WA_LICENSE_INFO,
   PHONE_DISPLAY,
   PHONE_LINK,
   WEBSITE_URL,
@@ -39,16 +41,21 @@ export function localBusinessSchema(specificCity?: string) {
     ],
     geo: {
       '@type': 'GeoCoordinates',
-      latitude: '47.7423',
-      longitude: '-121.9857',
+      latitude: '47.6922',
+      longitude: '-121.9868',
     },
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'Duvall',
-      addressLocality: specificCity || main.shortName,
-      addressRegion: main.stateAbbr,
-      postalCode: main.zipCodes[0],
-      addressCountry: 'US',
+      streetAddress: BUSINESS_ADDRESS.street,
+      addressLocality: BUSINESS_ADDRESS.city,
+      addressRegion: BUSINESS_ADDRESS.state,
+      postalCode: BUSINESS_ADDRESS.zip,
+      addressCountry: BUSINESS_ADDRESS.country,
+    },
+    hasCredential: {
+      '@type': 'EducationalOccupationalCredential',
+      credentialCategory: 'license',
+      name: WA_LICENSE_INFO,
     },
     areaServed: locations.map((loc) => ({
       '@type': 'City',
@@ -164,6 +171,44 @@ export function breadcrumbSchema(items: { label: string; path: string }[]) {
       name: item.label,
       item: `${BASE_URL}${item.path}`,
     })),
+  };
+}
+
+export function blogPostingSchema(post: {
+  title: string;
+  description: string;
+  slug: string;
+  datePublished: string;
+  dateModified: string;
+  image: string;
+  author?: string;
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    '@id': `${BASE_URL}/blog/${post.slug}#article`,
+    headline: post.title,
+    description: post.description,
+    image: post.image,
+    datePublished: post.datePublished,
+    dateModified: post.dateModified,
+    author: {
+      '@type': 'Person',
+      name: post.author || 'Jonathon — Sparks Electric and Service',
+      jobTitle: 'Licensed WA Electrical Contractor',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: BUSINESS_NAME,
+      logo: {
+        '@type': 'ImageObject',
+        url: LOGO_URL,
+      },
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `${BASE_URL}/blog/${post.slug}`,
+    },
   };
 }
 

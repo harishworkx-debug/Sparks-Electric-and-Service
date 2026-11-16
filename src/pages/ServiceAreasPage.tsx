@@ -48,34 +48,98 @@ export default function ServiceAreasPage() {
       {/* Location Cards */}
       <section className="bg-lightgray py-16 lg:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-12 text-center max-w-3xl mx-auto">
+            <h2 className="font-display text-3xl font-bold text-navy-500 sm:text-4xl">
+              Verified Service Locations Across King & Snohomish Counties
+            </h2>
+            <p className="mt-4 text-base text-navy-300">
+              Sparks Electric and Service is based in Duvall and provides fully licensed electrical contracting across 9 Washington communities:
+            </p>
+          </div>
+
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {locations.map((loc) => (
-              <Link
-                key={loc.slug}
-                to={`/${loc.slug}`}
-                className="group rounded-xl bg-white p-6 shadow-sm transition-all hover:shadow-lg hover:-translate-y-1"
-              >
-                <div className="mb-4 flex items-center gap-3">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-electric-500 text-white">
-                    <MapPin className="h-6 w-6" />
-                  </div>
+            {locations.map((loc) => {
+              const isSnohomish = loc.county.includes('Snohomish');
+              return (
+                <div
+                  key={loc.slug}
+                  className="rounded-xl bg-white p-6 shadow-sm border border-gray-100 flex flex-col justify-between transition-all hover:shadow-lg"
+                >
                   <div>
-                    <h2 className="font-display text-xl font-bold text-navy-500">{loc.name}</h2>
-                    <p className="text-sm text-navy-200">{loc.county}</p>
+                    <div className="mb-4 flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-electric-500 text-white">
+                          <MapPin className="h-5 w-5" />
+                        </div>
+                        <div>
+                          <h2 className="font-display text-xl font-bold text-navy-500">
+                            <Link to={`/${loc.slug}`} className="hover:text-electric-500 transition-colors">
+                              {loc.name}
+                            </Link>
+                          </h2>
+                          <p className="text-xs text-navy-300">{loc.county}</p>
+                        </div>
+                      </div>
+                      <span
+                        className={`text-[11px] font-semibold px-2 py-0.5 rounded-full ${
+                          loc.isMain
+                            ? 'bg-warmyellow-400 text-navy-500 font-bold'
+                            : isSnohomish
+                            ? 'bg-amber-100 text-amber-800'
+                            : 'bg-blue-50 text-blue-700'
+                        }`}
+                      >
+                        {loc.isMain ? 'Home Base' : isSnohomish ? 'Snohomish PUD' : 'PSE Territory'}
+                      </span>
+                    </div>
+
+                    <p className="text-xs sm:text-sm text-navy-300 leading-relaxed mb-4">
+                      {loc.description}
+                    </p>
+
+                    {/* Quick Direct Links for High Priority Services in City */}
+                    <div className="pt-3 border-t border-gray-100 space-y-1 text-xs">
+                      <p className="font-semibold text-navy-400 mb-1.5">Popular in {loc.shortName}:</p>
+                      <div className="grid grid-cols-2 gap-1.5">
+                        <Link
+                          to={`/electrical-repair-${loc.citySlug}`}
+                          className="text-navy-300 hover:text-electric-500 transition-colors truncate"
+                        >
+                          &bull; Electrical Repair
+                        </Link>
+                        <Link
+                          to={`/ev-charger-installation-${loc.citySlug}`}
+                          className="text-navy-300 hover:text-electric-500 transition-colors truncate"
+                        >
+                          &bull; EV Charger
+                        </Link>
+                        <Link
+                          to={`/electrical-panel-upgrade-${loc.citySlug}`}
+                          className="text-navy-300 hover:text-electric-500 transition-colors truncate"
+                        >
+                          &bull; Panel Upgrades
+                        </Link>
+                        <Link
+                          to={`/generator-installation-${loc.citySlug}`}
+                          className="text-navy-300 hover:text-electric-500 transition-colors truncate"
+                        >
+                          &bull; Generator Setup
+                        </Link>
+                      </div>
+                    </div>
                   </div>
-                  {loc.isMain && (
-                    <span className="ml-auto text-xs rounded bg-warmyellow-400 text-navy-500 px-2 py-1 font-bold">
-                      Main
-                    </span>
-                  )}
+
+                  <div className="mt-6 pt-3 border-t border-gray-100">
+                    <Link
+                      to={`/${loc.slug}`}
+                      className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-electric-600 hover:text-electric-700 transition-colors"
+                    >
+                      All Electrical Services in {loc.shortName} &rarr;
+                    </Link>
+                  </div>
                 </div>
-                <p className="text-sm text-navy-300 leading-relaxed">{loc.description}</p>
-                <div className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-electric-500 group-hover:text-electric-600 transition-colors">
-                  Electrical Services in {loc.shortName}
-                  <ArrowRight className="h-4 w-4" />
-                </div>
-              </Link>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

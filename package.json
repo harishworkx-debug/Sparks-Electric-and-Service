@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build:sitemap": "node --experimental-strip-types scripts/generate-sitemap.js",
-    "prebuild": "node --experimental-strip-types scripts/generate-sitemap.js",
+    "build:sitemap": "node --experimental-strip-types scripts/generate-sitemap.js && node --experimental-strip-types scripts/generate-seo-csv.js",
+    "prebuild": "node --experimental-strip-types scripts/generate-sitemap.js && node --experimental-strip-types scripts/generate-seo-csv.js",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",

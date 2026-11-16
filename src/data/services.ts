@@ -17,9 +17,21 @@ export const PHONE_DISPLAY = '(206) 476-7798';
 export const PHONE_LINK = 'tel:+12064767798';
 export const BUSINESS_NAME = 'Sparks Electric and Service';
 export const WEBSITE_URL = 'https://www.sparkselectricandservice.com/';
-export const MAPS_LINK = 'https://maps.app.goo.gl/ZA5bMvpkMFeGr2EF8';
+export const MAPS_LINK = 'https://maps.app.goo.gl/WA4z5H2YFEj7MxEi7';
 export const MAPS_EMBED_SRC =
   'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d85944.9243878395!2d-121.930765!3d47.68871395!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2ccd8cfa75de2a09%3A0xeddc5bd7d88e7188!2sSparks%20Electric%20and%20Service!5e0!3m2!1sen!2sin!4v1794642935324!5m2!1sen!2sin';
+
+export const BUSINESS_ADDRESS = {
+  street: '12520 322nd Ave NE',
+  city: 'Duvall',
+  state: 'WA',
+  stateFull: 'Washington',
+  zip: '98019',
+  country: 'US',
+  full: '12520 322nd Ave NE, Duvall, WA 98019',
+};
+
+export const WA_LICENSE_INFO = 'Licensed, Bonded & Insured WA Electrical Contractor';
 
 export const services: ServiceData[] = [
   {
@@ -243,10 +255,10 @@ export const services: ServiceData[] = [
       },
     ],
     relatedServiceSlugs: [
-      'electrical-wiring',
-      'outlet-installation',
-      'electrical-repair',
+      'switch-installation',
       'ceiling-fan-installation',
+      'electrical-wiring',
+      'electrical-repair',
     ],
   },
   {
@@ -298,10 +310,10 @@ export const services: ServiceData[] = [
       },
     ],
     relatedServiceSlugs: [
-      'lighting-installation',
       'electrical-wiring',
-      'outlet-installation',
+      'lighting-installation',
       'switch-installation',
+      'outlet-installation',
     ],
   },
   {
@@ -353,10 +365,10 @@ export const services: ServiceData[] = [
       },
     ],
     relatedServiceSlugs: [
-      'electrical-repair',
-      'circuit-breaker-repair',
       'electrical-wiring',
+      'circuit-breaker-repair',
       'ev-charger-installation',
+      'generator-installation',
     ],
   },
   {
@@ -571,9 +583,9 @@ export const services: ServiceData[] = [
       },
     ],
     relatedServiceSlugs: [
-      'electrical-repair',
-      'electrical-panel-upgrade',
       'electrical-troubleshooting',
+      'electrical-panel-upgrade',
+      'electrical-repair',
       'electrical-wiring',
     ],
   },

@@ -104,6 +104,9 @@ export default function Header() {
               )}
             </div>
 
+            <Link to="/blog" className="px-3 py-2 text-sm font-medium hover:text-warmyellow-400 transition-colors">
+              Guides
+            </Link>
             <Link to="/contact" className="px-3 py-2 text-sm font-medium hover:text-warmyellow-400 transition-colors">
               Contact
             </Link>
@@ -193,6 +196,10 @@ export default function Header() {
                 </div>
               )}
             </div>
+
+            <Link to="/blog" onClick={closeAll} className="block py-2.5 text-base font-medium hover:text-warmyellow-400">
+              Electrical Guides
+            </Link>
 
             <Link to="/contact" onClick={closeAll} className="block py-2.5 text-base font-medium hover:text-warmyellow-400">
               Contact
