@@ -207,10 +207,17 @@ export default function HomePage() {
               <CallButton size="lg" label={`Call ${PHONE_DISPLAY}`} />
               <Link
                 to="/services"
-                className="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-white/30 px-7 py-3.5 text-base font-bold text-white transition-all hover:border-white hover:bg-white/10"
+                className="inline-flex items-center justify-center gap-2 rounded-lg border-2 border-white/30 px-6 py-3.5 text-base font-bold text-white transition-all hover:border-white hover:bg-white/10"
               >
-                Explore Electrical Services
+                Explore Services
                 <ArrowRight className="h-5 w-5" />
+              </Link>
+              <Link
+                to="/electrician-duvall"
+                className="inline-flex items-center justify-center gap-2 rounded-lg bg-warmyellow-400 hover:bg-warmyellow-500 text-navy-900 px-6 py-3.5 text-base font-bold shadow-md transition-all transform hover:-translate-y-0.5"
+              >
+                <Zap className="h-5 w-5 fill-navy-900 text-navy-900" />
+                Electrician in Duvall
               </Link>
             </div>
           </div>

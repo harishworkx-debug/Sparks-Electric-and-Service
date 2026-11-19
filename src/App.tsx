@@ -13,35 +13,62 @@ import BlogIndexPage from '@/pages/BlogIndexPage';
 import BlogPostPage from '@/pages/BlogPostPage';
 import NotFoundPage from '@/pages/NotFoundPage';
 import StandaloneLandingPage from '@/standalone-landing/StandaloneLandingPage';
+import { USE_LANDING_PAGE_AS_HOME } from '@/siteMode';
 
 function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
       <Routes>
-        {/* Standalone Single-Page Landing Website (Isolated from Main Site Layout & Branding) */}
-        <Route path="/home-page" element={<StandaloneLandingPage />} />
-        <Route path="/electrician-duvall" element={<StandaloneLandingPage />} />
+        {USE_LANDING_PAGE_AS_HOME ? (
+          /* =========================================================================
+             🟢 MODE 1: DIRECT STANDALONE LANDING PAGE AT ROOT "/"
+             https://www.sparkselectricandservice.com/ -> Direct Landing Page
+             ========================================================================= */
+          <>
+            <Route path="/" element={<StandaloneLandingPage canonicalPath="/" />} />
+            <Route path="/home-page" element={<StandaloneLandingPage canonicalPath="/home-page" />} />
+            <Route path="/electrician-duvall" element={<StandaloneLandingPage canonicalPath="/electrician-duvall" />} />
 
-        {/* Existing Main Website Routes (Completely Preserved & Protected) */}
-        <Route element={<Layout />}>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="/service-areas" element={<ServiceAreasPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/blog" element={<BlogIndexPage />} />
-          <Route path="/blog/:slug" element={<BlogPostPage />} />
-          <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
-          <Route path="/terms-and-conditions" element={<TermsAndConditionsPage />} />
+            {/* Original website pages remain accessible */}
+            <Route element={<Layout />}>
+              <Route path="/original-home" element={<HomePage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/services" element={<ServicesPage />} />
+              <Route path="/service-areas" element={<ServiceAreasPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/blog" element={<BlogIndexPage />} />
+              <Route path="/blog/:slug" element={<BlogPostPage />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+              <Route path="/terms-and-conditions" element={<TermsAndConditionsPage />} />
+              <Route path="/:path" element={<DynamicRouter />} />
+              <Route path="*" element={<NotFoundPage />} />
+            </Route>
+          </>
+        ) : (
+          /* =========================================================================
+             ⚪ MODE 2: ORIGINAL FULL MULTI-PAGE WEBSITE AT ROOT "/"
+             https://www.sparkselectricandservice.com/ -> Original Sparks Electric
+             ========================================================================= */
+          <>
+            <Route path="/home-page" element={<StandaloneLandingPage canonicalPath="/home-page" />} />
+            <Route path="/electrician-duvall" element={<StandaloneLandingPage canonicalPath="/electrician-duvall" />} />
 
-          {/* Dynamic routes for location pages and service-location pages */}
-          {/* Matches /duvall-wa, /electrical-repair-duvall-wa, etc. */}
-          <Route path="/:path" element={<DynamicRouter />} />
-
-          {/* 404 */}
-          <Route path="*" element={<NotFoundPage />} />
-        </Route>
+            <Route element={<Layout />}>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/services" element={<ServicesPage />} />
+              <Route path="/service-areas" element={<ServiceAreasPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/blog" element={<BlogIndexPage />} />
+              <Route path="/blog/:slug" element={<BlogPostPage />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+              <Route path="/terms-and-conditions" element={<TermsAndConditionsPage />} />
+              <Route path="/:path" element={<DynamicRouter />} />
+              <Route path="*" element={<NotFoundPage />} />
+            </Route>
+          </>
+        )}
       </Routes>
     </BrowserRouter>
   );

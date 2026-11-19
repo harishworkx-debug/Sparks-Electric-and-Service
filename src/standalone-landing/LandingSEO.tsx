@@ -10,7 +10,7 @@ interface LandingSEOProps {
 export default function LandingSEO({
   title = `${LANDING_CONFIG.identityFull} | Reliable Local Electrical Repairs & Upgrades`,
   description = `Need a qualified electrician in Duvall, WA? Fast, professional electrical repairs, 200A panel upgrades, EV charger installations, wiring & troubleshooting. Call ${LANDING_CONFIG.phoneDisplay}.`,
-  canonicalPath = '/electrician-duvall',
+  canonicalPath = '/',
 }: LandingSEOProps) {
   useEffect(() => {
     // 1. Update Title

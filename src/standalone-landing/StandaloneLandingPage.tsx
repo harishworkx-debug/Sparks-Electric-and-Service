@@ -9,11 +9,15 @@ import LandingFAQ from './components/LandingFAQ';
 import LandingContact from './components/LandingContact';
 import LandingFooter from './components/LandingFooter';
 
-export default function StandaloneLandingPage() {
+interface StandaloneLandingPageProps {
+  canonicalPath?: string;
+}
+
+export default function StandaloneLandingPage({ canonicalPath = '/' }: StandaloneLandingPageProps) {
   return (
     <div className="min-h-screen bg-white text-navy-500 font-sans antialiased selection:bg-electric-500 selection:text-white">
       {/* Isolated SEO Head & Schema (Zero business name, purely SERVICE + LOCATION) */}
-      <LandingSEO />
+      <LandingSEO canonicalPath={canonicalPath} />
 
       {/* Standalone Header with Anchor Navigation */}
       <LandingHeader />
