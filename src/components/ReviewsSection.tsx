@@ -64,7 +64,9 @@ export default function ReviewsSection({
                     <h3 className="font-display text-base font-bold text-navy-500 leading-tight">
                       {rev.author}
                     </h3>
-                    <CheckCircle className="h-4 w-4 text-electric-500" title="Verified Customer" />
+                    <span title="Verified Customer">
+                      <CheckCircle className="h-4 w-4 text-electric-500" />
+                    </span>
                   </div>
                   {rev.badge && <p className="text-xs text-navy-200 mt-0.5">{rev.badge}</p>}
                 </div>

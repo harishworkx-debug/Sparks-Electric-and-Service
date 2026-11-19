@@ -46,7 +46,7 @@ export default function BlogPostPage() {
         canonicalPath={canonicalPath}
         ogImage={post.image}
         structuredData={[
-          blogPostingSchema(post),
+          blogPostingSchema({ ...post, description: post.metaDescription }),
           breadcrumbSchema(breadcrumbItems),
         ]}
       />

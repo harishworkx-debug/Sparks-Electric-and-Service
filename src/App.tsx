@@ -12,12 +12,18 @@ import TermsAndConditionsPage from '@/pages/TermsAndConditionsPage';
 import BlogIndexPage from '@/pages/BlogIndexPage';
 import BlogPostPage from '@/pages/BlogPostPage';
 import NotFoundPage from '@/pages/NotFoundPage';
+import StandaloneLandingPage from '@/standalone-landing/StandaloneLandingPage';
 
 function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
       <Routes>
+        {/* Standalone Single-Page Landing Website (Isolated from Main Site Layout & Branding) */}
+        <Route path="/home-page" element={<StandaloneLandingPage />} />
+        <Route path="/electrician-duvall" element={<StandaloneLandingPage />} />
+
+        {/* Existing Main Website Routes (Completely Preserved & Protected) */}
         <Route element={<Layout />}>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
