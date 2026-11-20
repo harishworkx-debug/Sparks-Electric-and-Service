@@ -85,7 +85,7 @@ const whyChoose = [
   {
     icon: Users,
     title: 'Direct Phone Communication',
-    description: 'When you call (832) 520-2717, you speak directly with an experienced professional. No automated call centers, confusing chatbots, or delayed emails.',
+    description: 'When you call (206) 476-7798, you speak directly with an experienced professional. No automated call centers, confusing chatbots, or delayed emails.',
   },
   {
     icon: Wrench,

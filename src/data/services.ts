@@ -13,8 +13,8 @@ export interface ServiceData {
   relatedServiceSlugs: string[];
 }
 
-export const PHONE_DISPLAY = '(832) 520-2717';
-export const PHONE_LINK = 'tel:+18325202717';
+export const PHONE_DISPLAY = '(206) 476-7798';
+export const PHONE_LINK = 'tel:+12064767798';
 export const BUSINESS_NAME = 'Sparks Electric and Service';
 export const WEBSITE_URL = 'https://www.sparkselectricandservice.com/';
 export const MAPS_LINK = 'https://maps.app.goo.gl/WA4z5H2YFEj7MxEi7';
@@ -58,7 +58,7 @@ export const services: ServiceData[] = [
       {
         title: 'Call and Describe the Issue',
         description:
-          'Call (832) 520-2717 and describe what you are experiencing. We will help assess the urgency and schedule a visit.',
+          'Call (206) 476-7798 and describe what you are experiencing. We will help assess the urgency and schedule a visit.',
       },
       {
         title: 'On-Site Diagnosis',
@@ -75,7 +75,7 @@ export const services: ServiceData[] = [
       {
         question: 'Do you offer same-day electrical repair in Duvall?',
         answer:
-          'We strive to respond to repair calls as quickly as possible. Call (832) 520-2717 to discuss your situation and current availability.',
+          'We strive to respond to repair calls as quickly as possible. Call (206) 476-7798 to discuss your situation and current availability.',
       },
       {
         question: 'Is a tripping breaker dangerous?',
@@ -687,7 +687,7 @@ export const services: ServiceData[] = [
       {
         question: 'Can you work after business hours to avoid disruption?',
         answer:
-          'We are happy to discuss scheduling options that work for your business. Call (832) 520-2717 to coordinate.',
+          'We are happy to discuss scheduling options that work for your business. Call (206) 476-7798 to coordinate.',
       },
     ],
     relatedServiceSlugs: [

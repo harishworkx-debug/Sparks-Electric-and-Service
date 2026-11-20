@@ -2,7 +2,7 @@ export const generalFaqs = [
   {
     question: 'What areas does Sparks Electric and Service cover?',
     answer:
-      'We are based in Duvall, WA and serve the surrounding Snoqualmie Valley and Eastside communities including Carnation, Monroe, Snoqualmie, North Bend, Redmond, Woodinville, Sammamish, and Fall City. Call (832) 520-2717 to confirm service availability in your area.',
+      'We are based in Duvall, WA and serve the surrounding Snoqualmie Valley and Eastside communities including Carnation, Monroe, Snoqualmie, North Bend, Redmond, Woodinville, Sammamish, and Fall City. Call (206) 476-7798 to confirm service availability in your area.',
   },
   {
     question: 'Do you work on both residential and commercial properties?',
@@ -12,12 +12,12 @@ export const generalFaqs = [
   {
     question: 'How do I schedule electrical service?',
     answer:
-      'Call us directly at (832) 520-2717. We will discuss your electrical needs, confirm service availability, and schedule a visit. We do not use online booking — all scheduling is done by phone.',
+      'Call us directly at (206) 476-7798. We will discuss your electrical needs, confirm service availability, and schedule a visit. We do not use online booking — all scheduling is done by phone.',
   },
   {
     question: 'Can you help with an electrical emergency?',
     answer:
-      'If you are experiencing an electrical emergency such as burning smells, sparking, or a complete power loss, call us at (832) 520-2717. For immediate danger, turn off power at the main breaker and call 911.',
+      'If you are experiencing an electrical emergency such as burning smells, sparking, or a complete power loss, call us at (206) 476-7798. For immediate danger, turn off power at the main breaker and call 911.',
   },
   {
     question: 'Do you install EV chargers?',
@@ -32,6 +32,6 @@ export const generalFaqs = [
   {
     question: 'What is your phone number?',
     answer:
-      'You can reach Sparks Electric and Service at (832) 520-2717. We handle all inquiries and scheduling by phone.',
+      'You can reach Sparks Electric and Service at (206) 476-7798. We handle all inquiries and scheduling by phone.',
   },
 ];
