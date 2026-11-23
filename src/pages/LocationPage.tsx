@@ -291,7 +291,7 @@ export default function LocationPage({ location }: LocationPageProps) {
                 Phone Consultation
               </h3>
               <p className="text-xs text-navy-300 leading-relaxed">
-                Call (206) 476-7798 to describe your electrical problem, project timeline, and specific property details.
+                Call (773) 337-7968 to describe your electrical problem, project timeline, and specific property details.
               </p>
             </div>
 

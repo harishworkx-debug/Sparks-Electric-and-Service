@@ -152,7 +152,7 @@ export default function LandingContact() {
                         required
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        placeholder="(206) 555-0123"
+                        placeholder="(773) 555-0123"
                         className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-electric-500 focus:border-electric-500 outline-none text-sm transition-all"
                       />
                     </div>

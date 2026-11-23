@@ -57,7 +57,7 @@ rows.push([
   'Electrical Services Duvall WA',
   'licensed electrician services, residential electrical services, commercial electrical services WA',
   'Electrical Services in Duvall, WA | Sparks Electric and Service',
-  'Professional electrical services in Duvall, WA including repair, troubleshooting, wiring, lighting, panel upgrades, EV chargers, and commercial electrical work. Call (206) 476-7798.',
+  'Professional electrical services in Duvall, WA including repair, troubleshooting, wiring, lighting, panel upgrades, EV chargers, and commercial electrical work. Call (773) 337-7968.',
   'Electrical Services',
   '12 service cards, cross-city location directory (all 9 cities x 5 services)',
   `${baseUrl}/services`,
@@ -75,7 +75,7 @@ rows.push([
   'Electrician Snoqualmie Valley WA',
   'service areas electrician, electrician King County WA, electrician Snohomish County WA',
   'Service Areas in Snoqualmie Valley, WA | Sparks Electric and Service',
-  'Sparks Electric and Service serves Duvall, Carnation, Monroe, Snoqualmie, North Bend, Redmond, Woodinville, Sammamish, and Fall City, WA. Call (206) 476-7798.',
+  'Sparks Electric and Service serves Duvall, Carnation, Monroe, Snoqualmie, North Bend, Redmond, Woodinville, Sammamish, and Fall City, WA. Call (773) 337-7968.',
   'Service Areas',
   '9 city directory cards, county tags (King/Snohomish), utility tags (PSE/Snohomish PUD), direct service links',
   `${baseUrl}/service-areas`,
@@ -111,7 +111,7 @@ rows.push([
   'About Sparks Electric and Service',
   'licensed electrical contractor Duvall, Jonathon electrician Duvall, bonded insured electrician WA',
   'About Sparks Electric and Service | Electrician in Duvall, WA',
-  'Sparks Electric and Service is a licensed electrical contractor based in Duvall, WA serving the Snoqualmie Valley. Call (206) 476-7798.',
+  'Sparks Electric and Service is a licensed electrical contractor based in Duvall, WA serving the Snoqualmie Valley. Call (773) 337-7968.',
   'About Sparks Electric and Service',
   'NAP Duvall office, WA license credentials, values, reviews, contact CTA',
   `${baseUrl}/about`,
@@ -129,7 +129,7 @@ rows.push([
   'Contact Sparks Electric and Service',
   'electrician phone Duvall WA, schedule electrician Duvall, Sparks Electric office location',
   'Contact Sparks Electric and Service | Electrician in Duvall, WA',
-  'Contact Sparks Electric and Service at (206) 476-7798. Serving Duvall, WA and the Snoqualmie Valley. Call us for all your electrical needs.',
+  'Contact Sparks Electric and Service at (773) 337-7968. Serving Duvall, WA and the Snoqualmie Valley. Call us for all your electrical needs.',
   'Contact Us',
   'Google Maps link (WA4z5H2YFEj7MxEi7), office address, license badge, service areas link',
   `${baseUrl}/contact`,
@@ -189,7 +189,7 @@ for (const loc of locations) {
     `Electrician in ${city} WA`,
     `local electrician ${city}, residential electrician ${city} WA, licensed electrical contractor ${city}, electrical repair ${city}`,
     `Electrician in ${loc.name} | Sparks Electric & Service`,
-    `Looking for a licensed electrician in ${loc.name}? Sparks Electric & Service provides residential electrical repairs, panel upgrades, EV chargers, wiring & lighting. Call (206) 476-7798.`,
+    `Looking for a licensed electrician in ${loc.name}? Sparks Electric & Service provides residential electrical repairs, panel upgrades, EV chargers, wiring & lighting. Call (773) 337-7968.`,
     `Electrician in ${city}, WA – Professional Residential Electrical Services`,
     `12 service cards in ${city}, 12 direct descriptive anchor links, neighboring service areas, reviews, FAQs`,
     url,
@@ -212,7 +212,7 @@ for (const serv of services) {
     const primaryKw = `${serv.name} ${city} ${state}`;
     const secondaryKws = `${serv.shortName} in ${city}, licensed electrician ${city} WA, residential ${serv.shortName.toLowerCase()} ${city}, local electrical contractor ${city}`;
     const title = `${serv.name} in ${city}, ${state} | Sparks Electric & Service`;
-    const desc = `Looking for ${serv.name.toLowerCase()} in ${city}, WA? Sparks Electric & Service provides professional ${serv.name.toLowerCase()}, repairs, installations & safety inspections. Call (206) 476-7798.`;
+    const desc = `Looking for ${serv.name.toLowerCase()} in ${city}, WA? Sparks Electric & Service provides professional ${serv.name.toLowerCase()}, repairs, installations & safety inspections. Call (773) 337-7968.`;
     const h1 = `${serv.name} in ${city}, ${state} – Professional Electrical Services`;
 
     rows.push([

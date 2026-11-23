@@ -13,8 +13,8 @@ export const LANDING_CONFIG = {
   tagline: 'Professional Electrical Services in Duvall & Snoqualmie Valley',
 
   // Verified Contact Details from Project
-  phoneDisplay: '(206) 476-7798',
-  phoneLink: 'tel:+12064767798',
+  phoneDisplay: '(773) 337-7968',
+  phoneLink: 'tel:+17733377968',
   address: {
     street: '12520 322nd Ave NE',
     city: 'Duvall',
@@ -184,7 +184,7 @@ export const LANDING_CONFIG = {
     },
     {
       q: 'How quickly can I schedule electrical service in Duvall or nearby Snoqualmie Valley areas?',
-      a: 'We prioritize prompt response times for all inquiries throughout Duvall, Carnation, Monroe, Redmond, and surrounding King County communities. Call (206) 476-7798 directly to discuss your electrical project, confirm appointment availability, and get your questions answered.',
+      a: 'We prioritize prompt response times for all inquiries throughout Duvall, Carnation, Monroe, Redmond, and surrounding King County communities. Call (773) 337-7968 directly to discuss your electrical project, confirm appointment availability, and get your questions answered.',
     },
   ],
 };

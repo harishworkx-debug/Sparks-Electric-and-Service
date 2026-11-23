@@ -31,7 +31,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'signs-electrical-panel-needs-upgrade',
     title: 'Signs Your Electrical Panel Needs an Upgrade: A Master Electrician\'s Guide',
     metaTitle: 'Signs Your Electrical Panel Needs an Upgrade | Sparks Electric & Service',
-    metaDescription: 'Is your breaker box struggling to keep up? Discover the top warning signs your electrical panel needs an upgrade to 200 amps before hazards develop. Call (206) 476-7798.',
+    metaDescription: 'Is your breaker box struggling to keep up? Discover the top warning signs your electrical panel needs an upgrade to 200 amps before hazards develop. Call (773) 337-7968.',
     targetKeyword: 'Electrical panel upgrade signs',
     excerpt:
       'Frequent tripping breakers, flickering lights, and aging 100-amp panels are clear signals that your home needs an electrical panel heavy-up to safely support modern power demands.',
@@ -262,7 +262,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'when-should-you-replace-old-electrical-wiring',
     title: 'When Should You Replace Old Electrical Wiring? Warning Signs & Safety Risks',
     metaTitle: 'When Should You Replace Old Electrical Wiring? | Sparks Electric & Service',
-    metaDescription: 'Is your home wiring aging or unsafe? Learn the signs of deteriorating knob-and-tube, ungrounded cloth cables, and aluminum wiring in Pacific Northwest homes. Call (206) 476-7798.',
+    metaDescription: 'Is your home wiring aging or unsafe? Learn the signs of deteriorating knob-and-tube, ungrounded cloth cables, and aluminum wiring in Pacific Northwest homes. Call (773) 337-7968.',
     targetKeyword: 'Old house electrical wiring',
     excerpt:
       'Historic Snoqualmie Valley homes frequently contain legacy wiring. Learn when ungrounded two-wire cables, knob-and-tube, or aluminum branch circuits require whole-home rewiring.',

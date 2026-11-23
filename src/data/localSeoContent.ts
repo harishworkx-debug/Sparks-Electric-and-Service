@@ -274,7 +274,7 @@ export function getLocalizedServiceContent(
       break;
 
     default:
-      localOverview = `Sparks Electric and Service delivers prompt, professional ${service.name.toLowerCase()} throughout ${city}, ${state} and surrounding ${profile.county} neighborhoods. Call (206) 476-7798 to speak directly with an electrician.`;
+      localOverview = `Sparks Electric and Service delivers prompt, professional ${service.name.toLowerCase()} throughout ${city}, ${state} and surrounding ${profile.county} neighborhoods. Call (773) 337-7968 to speak directly with an electrician.`;
       localChallenges = [
         `Code compliance with Washington State electrical amendments`,
         `Expert diagnostic and installation practices`,
@@ -298,11 +298,11 @@ export function getLocalizedServiceContent(
     },
     {
       question: `Why choose Sparks Electric and Service for ${service.name.toLowerCase()} in ${city}?`,
-      answer: `We are a locally based, fully licensed, bonded, and insured Washington electrical contractor. We understand the specific housing characteristics of ${city} and ${profile.county}, from rural valley acreage to newer subdivisions. When you call (206) 476-7798, you speak directly with an experienced professional.`,
+      answer: `We are a locally based, fully licensed, bonded, and insured Washington electrical contractor. We understand the specific housing characteristics of ${city} and ${profile.county}, from rural valley acreage to newer subdivisions. When you call (773) 337-7968, you speak directly with an experienced professional.`,
     },
     {
       question: `How quickly can you schedule ${service.name.toLowerCase()} in ${city}?`,
-      answer: `Because we are based right here in the Snoqualmie Valley, we offer prompt service scheduling for homeowners and businesses in ${city}. Call (206) 476-7798 to discuss your project timeline and confirm immediate availability.`,
+      answer: `Because we are based right here in the Snoqualmie Valley, we offer prompt service scheduling for homeowners and businesses in ${city}. Call (773) 337-7968 to discuss your project timeline and confirm immediate availability.`,
     },
   ];
 
@@ -338,7 +338,7 @@ export function getCityPageContent(location: LocationData): CityPageSeoContent {
 
   const h1 = `Electrician in ${city}, ${state} – Professional Residential Electrical Services`;
   const metaTitle = `Electrician in ${location.name} | Sparks Electric & Service`;
-  const metaDescription = `Looking for a licensed electrician in ${location.name}? Sparks Electric & Service provides residential electrical repairs, panel upgrades, EV chargers, wiring & lighting. Call (206) 476-7798.`;
+  const metaDescription = `Looking for a licensed electrician in ${location.name}? Sparks Electric & Service provides residential electrical repairs, panel upgrades, EV chargers, wiring & lighting. Call (773) 337-7968.`;
 
   const intro1 = `When electrical issues arise in your home, having the problem properly diagnosed is important for safety and reliable operation. Sparks Electric & Service provides electrical services for customers in ${city}, Washington, with solutions based on the type and condition of the electrical system.`;
 
@@ -394,7 +394,7 @@ export function getCityPageContent(location: LocationData): CityPageSeoContent {
     },
     {
       question: `How do I schedule an electrical assessment in ${city}?`,
-      answer: `Call us directly at (206) 476-7798. We handle all consultations and scheduling by phone to provide prompt, personalized service without impersonal automated booking forms.`,
+      answer: `Call us directly at (773) 337-7968. We handle all consultations and scheduling by phone to provide prompt, personalized service without impersonal automated booking forms.`,
     },
   ];
 
