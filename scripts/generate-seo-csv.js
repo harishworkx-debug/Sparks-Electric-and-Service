@@ -39,7 +39,7 @@ rows.push([
   'Electrician Duvall WA',
   'reliable electrical services Duvall, local electrician Duvall WA, residential electrical contractor Duvall',
   'Electrician in Duvall, WA | Sparks Electric & Service',
-  'Looking for electrical services in Duvall, WA? Contact Sparks Electric & Service for residential electrical repairs, wiring, lighting, panel upgrades and more. Request a service estimate today.',
+  'Sparks Electric and Service provides professional residential and commercial electrical services in Duvall, WA and surrounding Snoqualmie Valley areas. Call (773) 337-7968.',
   'Reliable Electrical Services in Duvall, WA',
   '13 core services, 9 service areas, about, contact, recent projects, reviews',
   `${baseUrl}/`,

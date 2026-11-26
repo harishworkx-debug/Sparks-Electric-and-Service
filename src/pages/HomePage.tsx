@@ -171,7 +171,7 @@ export default function HomePage() {
     <>
       <SEO
         title="Electrician in Duvall, WA | Sparks Electric & Service"
-        description="Looking for electrical services in Duvall, WA? Contact Sparks Electric & Service for residential electrical repairs, wiring, lighting, panel upgrades and more. Request a service estimate today."
+        description="Sparks Electric and Service provides professional residential and commercial electrical services in Duvall, WA and surrounding Snoqualmie Valley areas. Call (773) 337-7968."
         canonicalPath="/"
         structuredData={[
           localBusinessSchema(),
